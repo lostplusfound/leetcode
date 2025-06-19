@@ -1,4 +1,6 @@
-public class ContinuousSubarraySum {
+import java.util.*;
+
+public class Solution {
     /**
      * @param nums: An integer array
      * @return: Sum of all good subarray elements
@@ -12,7 +14,7 @@ public class ContinuousSubarraySum {
         List<List<Integer>> goodSubarrays = getGoodSubarrays(nums);
         for(List<Integer> subarray : goodSubarrays) {
             for(int i = 0; i < subarray.size(); i++) {
-                long numOccurences =  i * (subarray.size() - i - 1) + i + subarray.size() - i - 1;
+                long numOccurences =  i * (subarray.size() - i - 1) + subarray.size() - 1;
                 sum += (subarray.get(i) * numOccurences);
             }
         }
