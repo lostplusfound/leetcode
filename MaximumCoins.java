@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Solution {
+public class MaximumCoins {
     /**
      * @param heroes: An integer array
      * @param dungeons: An integer array

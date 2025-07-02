@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Solution {
+public class ContinuousSubarraySumV {
     /**
      * @param nums: An integer array
      * @return: Sum of all good subarray elements

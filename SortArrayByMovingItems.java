@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Solution {
+public class SortArrayByMovingItems {
     /**
      * @param nums: An integer array
      * @return: Minimum number of operations required to sort nums
