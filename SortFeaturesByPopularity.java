@@ -24,7 +24,6 @@ public class SortFeaturesByPopularity {
                 featureMap.put(f, featureMap.get(f) + 1);
             }
         }
-        System.out.println(featureMap);
         Arrays.sort(features, Comparator.comparing(o -> featureMap.get(o)).reversed());
         return features;
     }
