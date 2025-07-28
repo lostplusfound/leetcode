@@ -1,23 +1,27 @@
+import java.util.*;
+
 public class DailyTemperatures {
     /**
      * @param temperatures: a list of daily temperatures
-     * @return: a list of how many days you would have to wait until a warmer temperature
+     * @return: a list of how many days you would have to wait until a warmer
+     *          temperature
      */
     public int[] dailyTemperatures(int[] temperatures) {
         // Write your code here
         int[] daysUntilWarmer = new int[temperatures.length];
-        for(int i = 0; i < temperatures.length; i++) {
+        Deque<Integer> stack = new ArrayDeque<>();
+        for (int i = temperatures.length - 1; i >= 0; i--) {
             int temp = temperatures[i];
-            int numDays = 0;
-            for(int days = 1; days < temperatures.length - i; days++) {
-                if(temperatures[i + days] > temp) {
-                    numDays = days;
-                    break;
-                }
+            int days = 0;
+            while (!stack.isEmpty() && temperatures[stack.peek()] <= temp) {
+                stack.pop();
             }
-            daysUntilWarmer[i] = numDays;
+            if (!stack.isEmpty()) {
+                days = stack.peek() - i;
+            }
+            stack.push(i);
+            daysUntilWarmer[i] = days;
         }
         return daysUntilWarmer;
     }
 }
-
