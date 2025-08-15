@@ -1,9 +1,8 @@
-import java.util.*;
-
 class PaintHouseIV {
-    private Map<String, Long> cache = new HashMap<>();
+    private long[][][] cache;
     public long minCost(int n, int[][] cost) {
         long[] houses = new long[n];
+        cache = new long[n/2][3][3];
         return dfs(0, houses,cost );
     }
 
@@ -27,13 +26,12 @@ class PaintHouseIV {
                     continue;
                 }
                 long currentCost = lCosts[lColor] + rCosts[rColor];
-                String key = d + " " + houses[L] + " " + houses[R];
-                if(cache.containsKey(key)) {
-                    minCost = Math.min(minCost, currentCost + Math.min(minCost, cache.get(key)));
+                if(cache[d][lColor][rColor] != 0) {
+                    minCost = Math.min(minCost, currentCost + Math.min(minCost, cache[d][lColor][rColor]));
                     continue;
                 }
-                cache.put(key, dfs(d + 1, houses, cost));
-                minCost = Math.min(minCost, currentCost + cache.get(key));
+                cache[d][lColor][rColor] = dfs(d + 1, houses, cost);
+                minCost = Math.min(minCost, currentCost + cache[d][lColor][rColor]);
             }
         }
         return minCost;
