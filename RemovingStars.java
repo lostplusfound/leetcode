@@ -11,10 +11,10 @@ public class RemovingStars {
                 stack.push(c);
             }
         }
-        String result = "";
+        StringBuilder result = new StringBuilder();
         while(!stack.isEmpty()) {
-            result += stack.removeLast();
+            result.append(stack.removeLast());
         }
-        return result;
+        return result.toString();
     }
 }
